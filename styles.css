@@ -302,8 +302,35 @@ h1 {
 .card-footer {
   margin-top: 6px;
   padding: 17px 0 1px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
   color: var(--muted);
   font-size: 13px;
+}
+
+.clear-completed-button {
+  min-height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--danger);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.clear-completed-button:hover {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.clear-completed-button:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
 .visually-hidden {
