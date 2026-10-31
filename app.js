@@ -82,12 +82,19 @@ function renderTodos() {
     || (currentFilter === "active" && !todo.completed)
     || (currentFilter === "completed" && todo.completed)
   ));
+  const isFilteredEmpty = todos.length > 0 && visibleTodos.length === 0;
   const emptyMessages = {
     all: "還沒有任何待辦事項,新增一個吧!",
     active: "沒有未完成的待辦事項。",
     completed: "沒有已完成的待辦事項。",
   };
-  emptyState.textContent = emptyMessages[currentFilter];
+  const filteredEmptyMessages = {
+    active: "目前沒有未完成的事項；清單中的項目仍保留，只是被目前的篩選條件隱藏。切換「全部」即可查看。",
+    completed: "目前沒有已完成的事項；清單中的項目仍保留，只是被目前的篩選條件隱藏。切換「全部」即可查看。",
+  };
+  emptyState.textContent = isFilteredEmpty
+    ? filteredEmptyMessages[currentFilter]
+    : emptyMessages[currentFilter];
   emptyState.hidden = visibleTodos.length > 0;
 
   visibleTodos.forEach((todo) => {
